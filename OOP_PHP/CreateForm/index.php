@@ -1,7 +1,12 @@
 <?php
 
+require ('classSession.php');
 require ('classSmartForm.php');
 require ('classCookie.php');
+
+$session = new classSession(true);
+$session->setSession('userIP',$_SERVER['HTTP_USER_AGENT']);
+$echo = $session->getSession('userIP');
 
 if($cookie->getCookie('countVisits') != null){
     Cookie::$counter=$_COOKIE['countVisits']+1;
@@ -35,6 +40,7 @@ echo $form->createElement('input',['type'=>'password','name'=>'userpass','placeh
 echo $form->createElement('textarea',['cols'=>19,'rows'=>5,'name'=>'text']).$smartForm->saveText().'</textarea><br>';
 echo $form->createElement('input',['type'=>'submit','value'=>'Post','name'=>'send']);
 echo $form->closeForm();
+echo '<br>ECho:'.$echo;
 ?>
 <p>Счетчик посещений:<?php echo $cookie->getCookie('countVisits')+1; ?></p>
 </body>
