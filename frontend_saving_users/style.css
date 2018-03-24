@@ -1,0 +1,39 @@
+body {
+    padding-top: 20px;
+}
+main {
+    width: 222px;
+    height: auto;
+    margin: 0 auto;
+}
+#result {
+    width: 222px;
+    height: auto;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    font-family: Verdana,Arial, SansSerif;
+    font-weight: bolder;
+}
+main input {
+    margin-bottom: 5px;
+}
+.btn-success, .btn-primary {
+    width: 100%;
+    margin-bottom: 5px;
+}
+.btn-dark {
+    width: 32%;
+    margin-bottom: 5px;
+}
+.sort {
+    width: 100%;
+    text-align: center;
+}
+article {
+    position: fixed;
+    bottom: 10px;
+    left: 30px;
+}
+
+/*Like vs equal SQL*/

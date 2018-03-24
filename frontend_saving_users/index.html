@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="main">
+    <input type="text" placeholder="Name" id="name" value="" class="form-control">
+    <input type="text" placeholder="Age" id="age" value="" class="form-control">
+    <input type="text" placeholder="Profession" id="job" value="" class="form-control">
+    <button type="button" class="btn btn-success" onclick="adding()">Add next up</button>
+</main>
+<article>
+    <label for="buff">Buffer:</label>
+    <textarea class="form-control" rows="5" id="buff"></textarea>
+    <button type="button" class="btn btn-basic" id="save">Save</button>
+    <button type="button" class="btn btn-basic" id="show">Show</button>
+    <button type="button" class="btn btn-basic" id="clear">Clear</button>
+</article>
+<div id="result"></div>
+</body>
+<script src="saving_users.js"></script>
+<script src="buffer.js"></script>
+</html>
+
