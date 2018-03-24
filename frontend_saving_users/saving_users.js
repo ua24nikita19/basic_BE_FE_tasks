@@ -1,31 +1,38 @@
-var users = [];
-var inputs = document.getElementsByTagName('input');
+var lib = (function () {
+
+    var users = [],
+    inputs = document.getElementsByTagName('input');
 
 /*Функция для добавления новый пользователей*/
 function adding() {
+    var userJob = document.getElementById('job').value,
+        userName = document.getElementById('name').value,
+        userAge = document.getElementById('age').value;
 
-    if ((document.getElementById('name').value !== '') && +(document.getElementById('age').value)) {
-
+    if (!document.getElementById('name').value) {
+        alert('Некоторые поля незаполнелы');
+    }else {
         var unemployedUser = function () {
-            if (document.getElementById('job').value === '') {
+            if (!userJob) {
                 return 'Безработный';
             } else {
-                return document.getElementById('job').value;
+                return userJob;
             }
         };
-    }
-    users.push({
-        name: document.getElementById('name').value,
-        age: document.getElementById('age').value,
-        job: unemployedUser()
-    });
 
-    if (users.length > 0 && users.length <= 1) {
-        createElements();
-    }
+        users.push({
+            name: userName,
+            age: userAge,
+            job: unemployedUser()
+        });
 
-    if (users.length >= 0) {
-        showArray(users, document.getElementById('result'));
+        if (users.length > 0 && users.length <= 1) {
+            createElements();
+        }
+
+        if (users.length >= 0) {
+            showArray(users, document.getElementById('result'));
+        }
     }
 }
 
@@ -59,31 +66,34 @@ function sortByField(value) {
 
     var result = document.getElementById('result');
 
-    if (value.toLowerCase() === 'age') {
-        result.innerText = "";
-        users.sort(function compare(AgeOne, AgeTwo) {
-            return AgeOne.age - AgeTwo.age;
-        });
-        showArray(users, result);
+    switch (value.toLowerCase()) {
 
-    } else if (value.toLowerCase() === 'name') {
+        case 'age':
+            result.innerText = "";
+            users.sort(function compare(AgeOne, AgeTwo) {
+                return AgeOne.age - AgeTwo.age;
+            });
+            showArray(users, result);
+            break;
 
-        result.innerText = "";
-        var map = users.map(function (e, i) {
-            return {index: i, item: e.name.toLowerCase()};
-        });
+        case 'name':
+            result.innerText = "";
+            var map = users.map(function (e, i) {
+                return {index: i, item: e.name.toLowerCase()};
+            });
 
-        // сортируем карту, содержащую нормализованные значения
-        map.sort(function (a, b) {
-            return +(a.item > b.item) || +(a.item === b.item) - 1;
-        });
+            // сортируем карту, содержащую нормализованные значения
+            map.sort(function (a, b) {
+                return +(a.item > b.item) || +(a.item === b.item) - 1;
+            });
 
-        // контейнер для результирующего порядка
-        var sortedByName = map.map(function (e) {
-            return users[e.index];
-        });
+            // контейнер для результирующего порядка
+            var sortedByName = map.map(function (e) {
+                return users[e.index];
+            });
 
-        showArray(sortedByName, result);
+            showArray(sortedByName, result);
+            break;
     }
 }
 
@@ -105,4 +115,6 @@ function showArray(array, place) {
         place.innerHTML += '<br><hr>';
     }
 }
+})();
 
+var buff = lib.showArray();

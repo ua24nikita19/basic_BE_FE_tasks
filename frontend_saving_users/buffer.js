@@ -1,13 +1,14 @@
-var addInBuffer = document.getElementById('save');
-var clearBuffer = document.getElementById('clear');
-var showBuffer = document.getElementById('show');
-var res = document.getElementById('buff');
+var addInBuffer = document.getElementById('save'),
+    clearBuffer = document.getElementById('clear'),
+    showBuffer = document.getElementById('show'),
+    res = document.getElementById('buff');
+
 function makeBuffer() {
 
     var arr = [];
 
     function buffer(value) {
-        if (value !== undefined && value !== "") {
+        if (value) {
             arr.push({value});
         } else {
             if (arr.length > 0) {
@@ -33,11 +34,11 @@ function makeBuffer() {
 
 var buffer = makeBuffer();
 addInBuffer.addEventListener('click', function () {
-    return buffer(document.getElementById('buff').value);
+    buffer(document.getElementById('buff').value);
 });
 clearBuffer.addEventListener('click',function () {
-    return buffer.clear();
+    buffer.clear();
 });
 showBuffer.addEventListener('click',function () {
-    return buffer();
+    buffer();
 });
