@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="frontend_saving_users" />
-    <orderEntry type="module" module-name="FE7" />
+    <orderEntry type="module" module-name="OOP_JS" />
+    <orderEntry type="module" module-name="CRUD" />
   </component>
 </module>

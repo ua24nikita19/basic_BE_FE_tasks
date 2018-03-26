@@ -15,7 +15,7 @@ class smartForm extends classForm{
         }else {
             return $this->name='';
         }
-        return null;
+        return NULL;
     }
     public function saveText(){
 
@@ -26,7 +26,7 @@ class smartForm extends classForm{
         }else {
             return $this->text='';
         }
-        return null;
+        return NULL;
     }
 
 }

@@ -28,7 +28,7 @@ class classForm
         if (!empty($element)) {
             return '<' . $element . ' ' . $this->addAttributes($attributes) . '>';
         }
-        return null;
+        return NULL;
     }
 
     public function addAttributes($attributes)

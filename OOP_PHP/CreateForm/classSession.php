@@ -19,10 +19,7 @@ class classSession
 
     protected function stopSession()
     {
-//        if(session_id()!=""){
-//            session_destroy();
-//        }
-        if (self::$started == true) {//ЕСЛИ МЫ СОЗДАДИМ НОВОЫЙ ОБЪЕКТ КЛАССА, ТО СТАТИК $started будет false для каждого нового?
+        if (self::$started == true) {
             session_unset();
         }
     }
@@ -40,14 +37,6 @@ class classSession
         if (!isset($_SESSION[$name])) {
             $_SESSION[$name] = $value;
         }
-    }
-
-    public function __isset($name)
-    {
-        if (isset($name)) {
-            return $name;
-        }
-        return null;
     }
 }
 

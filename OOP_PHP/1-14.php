@@ -6,23 +6,24 @@ class User
 
     public function __construct($age, $name)
     {
-        $this->__set('age', $age);
-        $this->__set('name', $name);
+        $this->setName($name);
+        $this->setAge($age);
     }
 
-    public function __set($prop, $value)
-    {
-        if (property_exists($this, $prop)) {
-            $this->$prop = $value;
-        }
+    public function getName(){
+        return $this->name;
     }
 
-    public function __get($prop)
-    {
-        if (property_exists($this, $prop)) {
-            return $this->$prop;
-        }
-        return null;
+    public  function setName($value){
+        $this->name = $value;
+    }
+
+    public function getAge(){
+        return $this->age;
+    }
+
+    public  function setAge(int $value){
+        $this->age = $value;
     }
 }
 
@@ -110,27 +111,3 @@ class Driver extends Workers
         return null;
     }
 }
-
-$objIvan = new Workers(20, 'Ivan');
-$objIvan->setSalary(2000);
-
-$objVasya = new Workers(21, 'Vasya');
-$objVasya->setSalary(2500);
-
-$objDima = new student(19, 'Dima');
-$objDima->setCourse(3);
-$objDima->setGrants(1000);
-
-$objPetya = new Driver(30, 'Petya');
-$objPetya->setCategory('A');
-$objPetya->setDrivingExperience(10);
-$objPetya->setSalary(10000);
-
-echo 'Sum salary: ' . ($objVasya->getSalary() + $objIvan->getSalary()) . '<br><br>';
-
-echo 'Dima\'s grants:<i>' . $objDima->getGrants() . '</i> and course:<i>' . $objDima->getCourse() . '</i><br>';
-
-echo '<br>Имя:' . $objPetya->__get('name')
-    . '<br>Возраст:' . $objPetya->__get('age')
-    . '<br>Категория:' . $objPetya->getCategory()
-    . '<br>Водительский стаж:' . $objPetya->getDrivingExperience();
