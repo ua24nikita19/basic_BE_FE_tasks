@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+.form-control {
+    width: 250px;
+    text-align: center;
+    margin: 40px auto 0;
+    height: auto;
+}
+.form-control .input[type=text] {
+    margin-bottom: 10px;
+}
+.btn-success {
+    margin-top: 10px;
+}
