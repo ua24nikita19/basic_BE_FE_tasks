@@ -4,7 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="OOP_JS" />
-    <orderEntry type="module" module-name="CRUD" />
+    <orderEntry type="module" module-name="Laravel-Project" />
   </component>
 </module>

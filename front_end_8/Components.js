@@ -161,7 +161,6 @@ function renderPage(...args){
     for(let i = 0; i < sequenceBlocks.length; i++){
         document.body.appendChild(sequenceBlocks[i].name.render());
     }
-
 }
 
 componentHeader.setView(viewHeader);

@@ -3,4 +3,7 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file:///var/www/Laravel-Project/app/Http/Controllers/loginController.php" />
+  </component>
 </project>

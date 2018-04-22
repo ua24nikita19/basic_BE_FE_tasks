@@ -41,7 +41,7 @@ $cookie->setCookie('countVisits', Cookie::$counter, 10);
 </head>
 <body>
 <?php
-echo $form->openForm(['class' => 'form', 'action' => 'index.php', 'method' => 'POST']);
+echo $form->openForm(['class' => 'form', 'action' => 'indexer.php', 'method' => 'POST']);
 echo $form->createElement('input', ['type' => 'text', 'placeholder' => 'name', 'name' => 'username', 'value' => $smartForm->saveName()]);
 echo $form->createElement('input', ['type' => 'password', 'name' => 'userpass', 'placeholder' => 'password']);
 echo $form->createElement('textarea', ['cols' => 19, 'rows' => 5, 'name' => 'text']) . $smartForm->saveText() . '</textarea><br>';
