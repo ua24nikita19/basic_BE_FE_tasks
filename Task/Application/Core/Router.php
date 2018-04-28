@@ -37,18 +37,21 @@ class Router
     public function run() {
         if ($this->match()) {
 
-            $path = CONTROLLERS.DS.ucfirst($this->params['controller']).'Controller';
+            $controller_file = ucfirst($this->params['controller']).'Controller';
+            $controller_path = str_replace('/','\\',"Application/Controllers/".$controller_file);
 
-            if (class_exists($path)) {
+            if (class_exists($controller_path)) {
                 $action = $this->params['action'].'Action';
-                if (method_exists($path, $action)) {
-                    $controller = new $path;
+
+                if (method_exists($controller_path, $action)) {
+                    $controller = new $controller_path;
                     $controller->$action();
                 } else {
                     echo 'Не найден экшн';
                 }
+
             } else {
-                echo 'Не найден контроллер '.$path;
+                echo 'Не найден контроллер '.$controller_path;
             }
 
         } else {
