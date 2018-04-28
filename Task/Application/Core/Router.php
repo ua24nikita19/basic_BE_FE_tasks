@@ -38,12 +38,13 @@ class Router
         if ($this->match()) {
 
             $path = CONTROLLERS.DS.ucfirst($this->params['controller']).'Controller';
-            $path = ROOT.DS.'Application'.DS.'Controllers'.DS.ucfirst($this->params['controller']).'Controller';
-
+            $e = CONTROLLERS.DS.'e';
+//            dd(file_exists($path.'.php'));
+            dd(class_exists($e.'php'));
             if (class_exists($path)) {
                 $action = $this->params['action'].'Action';
                 if (method_exists($path, $action)) {
-                    $controller->$action();
+                    $path->$action();
                 } else {
                     echo 'Не найден экшн';
                 }
