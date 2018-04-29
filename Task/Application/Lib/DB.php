@@ -4,21 +4,28 @@ namespace Application\Lib;
 
 class DB
 {
-    protected static $dbConnection;
+    public static $dbConnection;
 
-    public function __construct($host, $user, $password, $database)
+    public function __construct()
     {
-        self::$dbConnection = mysqli_connect($host, $user, $password, $database);
+        $cridentials = require ROOT.DS.'Application'.DS.'Config'.DS.'db.php';
+        self::$dbConnection = mysqli_connect($cridentials['host'], $cridentials['user'],
+              $cridentials['pass'], $cridentials['name']);
     }
-    public function getConnect(){
+
+    public function getConnect()
+    {
         return self::$dbConnection;
     }
-    public function disconnect(){
+
+    public function disconnect()
+    {
         mysqli_close(self::$dbConnection);
     }
-    public function query($queryString){
+
+    public function query($queryString)
+    {
         return mysqli_query(self::$dbConnection, $queryString);
     }
-    public function rollBackDelete(){
-    }
+
 }

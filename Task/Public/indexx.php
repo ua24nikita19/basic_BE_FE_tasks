@@ -7,9 +7,12 @@ define('LIB', ROOT.DS.'Application'.DS.'Lib');
 define('CORE', ROOT.DS.'Application'.DS.'Core');
 define('CONTROLLERS', ROOT.DS.'Application'.DS.'Controllers');
 
-require (ROOT.DS.'Application'.DS.'Lib'.DS.'develop.php');
-
+use Application\Lib\Session;
 use Application\Core\Router;
+
+session_start();
+
+require (ROOT.DS.'Application'.DS.'Lib'.DS.'develop.php');
 
 spl_autoload_register(function ($class){
     $inc_class = ROOT.DS.str_replace('\\', DS, $class.'.php');

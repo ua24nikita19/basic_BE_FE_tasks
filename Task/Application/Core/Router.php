@@ -2,6 +2,8 @@
 
 namespace Application\Core;
 
+use Application\Core\View;
+
 class Router
 {
     protected $routes = [];
@@ -14,7 +16,6 @@ class Router
         foreach ($arr as $key => $val) {
             $this->add($key, $val);
         }
-
     }
 
     public function add($route, $params) {
@@ -26,7 +27,8 @@ class Router
         $uri = trim($_SERVER['REQUEST_URI'], '/');
 
         foreach ($this->routes as $route => $params) {
-            if (preg_match($route, $uri, $matches)) {
+//            if (preg_match($route, $uri, $matches)) {
+            if (stristr($route, $uri, true)) {
                 $this->params = $params;
                 return true;
             }
@@ -44,18 +46,21 @@ class Router
                 $action = $this->params['action'].'Action';
 
                 if (method_exists($controller_path, $action)) {
-                    $controller = new $controller_path;
+                    $controller = new $controller_path($this->params);
                     $controller->$action();
                 } else {
-                    echo 'Не найден экшн';
+//                    View::error(404);
+                    echo 'Нету метода';
                 }
 
             } else {
-                echo 'Не найден контроллер '.$controller_path;
+//                View::error(404);
+                echo 'Нету class';
             }
 
         } else {
-            echo 'Не найден маршрут';
+//            View::error(404);
+            echo 'Нету rout';
         }
     }
 }
