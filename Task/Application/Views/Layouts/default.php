@@ -15,6 +15,9 @@
         width: 100%;
         height: 100%;
     }
+    table th a, .t{
+        color: black !important;
+    }
     div#modal {
         background-color: rgba(0,0,0,0.3);
         width: 100%;
