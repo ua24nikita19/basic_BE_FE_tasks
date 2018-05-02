@@ -84,6 +84,14 @@
     pre {
         color: black;
     }
+    #addtask {
+        width: 350px;
+        text-align: center !important;
+        margin: 0 auto;
+    }
+    #addtask > div {
+        margin: 0 auto;
+    }
 </style>
 <?php  echo $content; ?>
 </body>

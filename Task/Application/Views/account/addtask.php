@@ -25,7 +25,7 @@
 ?>
 
 <?php if (isset($_POST['addNote'])): ?>
-<form action="/addtask" method="post" style="width: 350px; text-align: center; margin: 0 auto;" >
+<form action="/addtask" method="post" id="addtask" >
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text">Name</span>
@@ -45,8 +45,8 @@
         <textarea rows="10" class="form-control" name="text"></textarea>
     </div>
 
-    <button id="submit" type="button" class="btn btn-outline-success">Добавить</button>
-
+    <button id="submit" type="button" class="btn btn-outline-success">Добавить</button><br>
+    <a href="/task" class="badge badge-info" name="back_task">К списку задач</a>
     <div id="modal">
         <div class="modal-content">
             <div class="modal-title">

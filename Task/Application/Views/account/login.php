@@ -30,10 +30,6 @@ $admin = mysqli_fetch_assoc($adminRecord);
     <div class="form-group">
         <input type="password" class="form-control" placeholder="password" name="a_pass">
     </div>
-<!--    <div class="form-check">-->
-<!--        <input type="checkbox" class="form-check-input">-->
-<!--        <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
-<!--    </div>-->
     <button type="submit" class="btn btn-primary">Sign in</button><br>
     <br>
 </form>
