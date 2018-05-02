@@ -43,4 +43,7 @@ $adminSessionName = isset($_SESSION['admin']) ? $_SESSION['admin'] : 'незна
         <input type="hidden" name="image_id" value="<?php echo $id ?>">
         </tbody>
     </table>
+    <ul class="pagination">
+        <li><a href="#">1</a></li>
+    </ul>
 </form>

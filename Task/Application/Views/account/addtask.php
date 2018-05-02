@@ -11,11 +11,7 @@
             unset($_SESSION['admin']);
             header('location:'. '/task');
     }
-//    if (isset($_FILES[$_POST['image_id']]['name'])) {
-//        $uploadDir = ROOT.DS.'Public/Images/';
-//        $uploadFile = $uploadDir . basename($_FILES[$_POST['image_id']]['name']);
-//        copy($_FILES[$_POST['image_id']]['name'], $uploadDir);
-//    }
+
     if (isset($_POST['username'], $_POST['email'], $_POST['text'])){
 
         $username = htmlspecialchars($_POST['username']);
@@ -29,7 +25,7 @@
 ?>
 
 <?php if (isset($_POST['addNote'])): ?>
-<form action="/addtask" method="post" enctype="multipart/form-data" style="width: 350px; text-align: center; margin: 0 auto;" >
+<form action="/addtask" method="post" style="width: 350px; text-align: center; margin: 0 auto;" >
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text">Name</span>
@@ -48,9 +44,26 @@
         </div>
         <textarea rows="10" class="form-control" name="text"></textarea>
     </div>
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <input name="<?php echo $_POST['image_id'] ?>" type="file" />
-    <button type="submit" class="btn btn-outline-success">Добавить</button>
-    <input type="hidden" name="image_id" value="<?php echo $_POST['image_id'] ?>">
+
+    <button id="submit" type="button" class="btn btn-outline-success">Добавить</button>
+
+    <div id="modal">
+        <div class="modal-content">
+            <div class="modal-title">
+                Вы действительно хотите добавить эти данные?
+            </div>
+            <div class="modal-main">
+                <p>Имя: <span class="name_span"></span></p>
+                <br><p>E-mail: <span class="email_span"></span></p>
+                <br><p>Текст:</p>
+                <pre class="txt_span">
+                </pre>
+            </div>
+            <div class="modal-response">
+                <button type="submit" class="modal-btn-add">Добавить</button>
+                <button type="button" class="modal-btn-cancel">Отменить</button>
+            </div>
+        </div>
+    </div>
 </form>
 <?php endif; ?>
