@@ -4,7 +4,7 @@
 include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'editrec_inc.php';
 
 ?>
-<form action="/editrec" method="post" style="width: 350px; text-align: center; margin: 0 auto;" >
+<form action="/editrec" method="post" class="edit_form" >
     <input type="hidden" name="editNote">
     <div class="input-group mb-3">
         <div class="input-group-prepend">

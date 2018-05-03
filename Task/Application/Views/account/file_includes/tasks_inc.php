@@ -9,7 +9,7 @@ $page = 0;
 
 $row = [];
 $row = $result[0]->fetch_all(MYSQLI_ASSOC);
-$paginationLength = floor(count($row)/$countRecords);
+$paginationLength = ceil(count($row)/$countRecords);
 $doneOrNotDone=0;
 
 for ($i=0;$i<$paginationLength;$i++){

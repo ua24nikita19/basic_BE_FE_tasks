@@ -1,11 +1,11 @@
 <?php
-
+error_reporting(0);
 //Application/Views/account/file_includes/tasks_inc.php
 include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tasks_inc.php';
 
 ?>
 
-<form action="/addtask" method="post">
+<form action="/addtask" method="post" >
     <input type="hidden" name="addNote">
     <span class="admin">Привет <?php echo $adminSessionName ?></span>
 <!--    <a href="/login" name="sign_in" class="btn-login">Вход</a>-->
@@ -44,13 +44,22 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tas
                 <input type="radio" name="result_<?php echo $row[$i]['id'] ?>" value="0" <?php echo $res;$checked=$status; ?> > Not done<Br>
             </th>
             <?php endif; ?>
-            <td width="15%"><?php echo $row[$i]['username'] ?></td>
-            <td width="15%"> <?php echo $row[$i]['email'] ?> </td>
+            <td width="15%"><?php echo isset($row[$i]['username'])? $row[$i]['username'] : ''?></td>
+            <td width="15%"> <?php echo isset($row[$i]['email'])? $row[$i]['email'] : '' ?> </td>
             <input type="hidden" name="user_<?php echo $row[$i]['email'] ?>">
-            <td width="30%"><?php echo nl2br($row[$i]['text']) ?></td>
-            <td width="10%"></td>
-            <td width="10%"><?php echo $row[$i]['datetime'] ?></td>
-            <td width="10%"><?php echo boolval($row[$i]['status'])? 'Выполнено' : 'Не выполнено' ?></td>
+            <td width="30%"><?php echo nl2br(isset($row[$i]['text'])? $row[$i]['text'] : '') ?></td>
+            <td width="10%">
+                <?php
+                    $img = isset($row[$i]['image']) ? $row[$i]['image'] : '';
+                    if($img) echo '<img src="'.$row[$i]['image'].'"'.' width=100;height=100;>'
+                ?>
+            </td>
+            <td width="10%"><?php echo isset($row[$i]['datetime'])? $row[$i]['datetime'] : '' ?></td>
+            <td width="10%"><?php
+                $statusRecord = isset($row[$i]['status']) ? $row[$i]['status'] : '';
+                echo boolval($statusRecord)? 'Выполнено' : 'Не выполнено';
+                ?>
+            </td>
         </tr>
         <?php endfor; ?>
         </tbody>

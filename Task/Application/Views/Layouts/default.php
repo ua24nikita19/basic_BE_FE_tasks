@@ -91,8 +91,11 @@
         text-align: center !important;
         margin: 0 auto;
     }
-    #addtask > div {
+    #addtask > div, input {
         margin: 0 auto;
+    }
+    input[type='file']{
+        margin: 10px auto;
     }
     .btn-status {
         display: block;
@@ -118,6 +121,85 @@
         margin-top: 10px;
         text-align: left;
         max-width: 150px;
+    }
+    .btn-exit:hover, .btn-login:hover {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: #f33155;
+    }
+    .btn-exit, .btn-login {
+        display: block;
+        border: 1px solid maroon;
+        width: 70px;
+        height: 30px;
+        background-color: transparent;
+        float: left;
+        margin-right: 5px;
+        outline-style: none;
+        padding: 1px;
+        color: black;
+    }
+    body {
+        padding: 25px;
+        text-align: center;
+    }
+    .btn-outline-warning {
+        margin-bottom: 20px;"
+    }
+    .btn-outline-success {
+        margin: 5px;
+    }
+
+    .table.table-sm.table-dark td, th {
+        padding: 15px;
+    }
+
+    table a, .t {
+        color: white;
+        text-underline: none;
+    }
+    table a:visited, a:hover {
+        color: white;
+    }
+    #register {
+        margin: 0 auto;
+        width: 350px;!important;
+    }
+    .admin {
+        float: right;
+        font-weight: bold;
+        font-family: SansSerif, "DejaVu Sans";
+    }
+
+    .btn-addd {
+        display: block;
+        border: 1px solid maroon;
+        width: 140px;
+        height: 30px;
+        background-color: transparent;
+        outline-style: none;
+        padding: 1px;
+        color: black;
+        margin: 0 auto;
+    }
+
+    .btn-addd:hover {
+        color: inherit;
+        cursor: pointer;
+        background-color: #f33155;
+    }
+
+    .btn-addd, .btn-exit, .btn-login, .btn-status {
+        margin-bottom: 10px;
+    }
+    .edit_form {
+        width: 350px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .edit_form div {
+        margin: 0 auto;
     }
 
 </style>

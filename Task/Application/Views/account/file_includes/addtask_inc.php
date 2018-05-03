@@ -32,6 +32,19 @@ if (isset($_POST['exit']))
     header('location:'. '/task');
 }
 
+
+if($_FILES['imgfile']['error'] == 0) {
+    if ($_FILES["imgfile"]["size"] > 350*350) {
+        die('Big file');
+    } else {
+        $path = ROOT.DS.'Public'.DS.'/Images' . DS . $_FILES["imgfile"]["name"];
+        $ext = array_pop(explode('.',$_FILES['imgfile']['name']));
+        $new_name = time().'.'.$ext; // новое имя с расширением
+        $full_path = $path;
+    }
+}
+
+
 if (isset($_POST['username'], $_POST['email'], $_POST['text'])){
 
     $username = htmlspecialchars($_POST['username']);
@@ -39,10 +52,19 @@ if (isset($_POST['username'], $_POST['email'], $_POST['text'])){
     $text = htmlspecialchars($_POST['text']);
     $createConnection = new DB();
     $connection = DB::$dbConnection;
-    $addRec = mysqli_query($connection,"INSERT INTO tasks (id, username, email, text) VALUES (null,'$username','$email','$text')");
+
+    if (is_uploaded_file($_FILES["imgfile"]["tmp_name"])) {
+        move_uploaded_file($_FILES["imgfile"]["tmp_name"],$full_path);
+        $short_path = '/Images' . DS . $_FILES["imgfile"]["name"];
+    }
+
+    $full_path = isset($full_path) ? $short_path : null;
+
+    $addRec = mysqli_query($connection,"INSERT INTO tasks (id, username, email, text, image) VALUES (null,'$username','$email','$text','$full_path')");
     echo '<a href="/task">Back</a>';
 }
 
 if (isset($_POST['sign_in'])){
     header('location: '.'/login');
 }
+

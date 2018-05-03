@@ -1,12 +1,12 @@
 <?php
-
+error_reporting(0);
 //Application/Views/account/file_includes/addtask_inc.php
 include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'addtask_inc.php';
 
 ?>
 
 <?php if (isset($_POST['addNote'])): ?>
-<form action="/addtask" method="post" id="addtask" >
+<form action="/addtask" method="post" id="addtask" enctype="multipart/form-data">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text">Name</span>
@@ -25,7 +25,7 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'add
         </div>
         <textarea rows="10" class="form-control" name="text" maxlength="400"></textarea>
     </div>
-
+    <input id="img" name="imgfile" type="file">
     <button id="submit" type="button" class="btn btn-outline-success">Добавить</button><br>
     <a href="/task" class="badge badge-info" name="back_task">К списку задач</a>
     <div id="modal">
