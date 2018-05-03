@@ -1,27 +1,8 @@
 <?php
-    use Application\Lib\DB;
 
-    if (isset($_POST['id'])) {
-        $_SESSION['edit_record'] = $_POST['id'];
-        header('location: '. '/editrec');
-    }
+//Application/Views/account/file_includes/addtask_inc.php
+include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'addtask_inc.php';
 
-    if (isset($_POST['exit']))
-    {
-            unset($_SESSION['admin']);
-            header('location:'. '/task');
-    }
-
-    if (isset($_POST['username'], $_POST['email'], $_POST['text'])){
-
-        $username = htmlspecialchars($_POST['username']);
-        $email = htmlspecialchars($_POST['email']);
-        $text = htmlspecialchars($_POST['text']);
-        $createConnection = new DB();
-        $connection = DB::$dbConnection;
-        $addRec = mysqli_query($connection,"INSERT INTO tasks (id, username, email, text) VALUES (null,'$username','$email','$text')");
-        echo '<a href="/task">Back</a>';
-    }
 ?>
 
 <?php if (isset($_POST['addNote'])): ?>
@@ -42,7 +23,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text">Memo</span>
         </div>
-        <textarea rows="10" class="form-control" name="text"></textarea>
+        <textarea rows="10" class="form-control" name="text" maxlength="400"></textarea>
     </div>
 
     <button id="submit" type="button" class="btn btn-outline-success">Добавить</button><br>

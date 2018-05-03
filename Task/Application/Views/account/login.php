@@ -1,27 +1,8 @@
 <?php
-use Application\Lib\LoginForm;
-use Application\Lib\DB;
-use Application\Lib\Session;
 
-if (isset($_POST['a_name'], $_POST['a_pass'])) {
+//Application/Views/account/file_includes/login_inc.php
+include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'login_inc.php';
 
-$login = new LoginForm($_POST);
-$name = $login->getUsername();
-$password = $login->getPassword();
-
-$db = new DB();
-$dbC = DB::$dbConnection;
-
-$adminRecord = $dbC->query("SELECT * FROM admin");
-$admin = mysqli_fetch_assoc($adminRecord);
-
-    if ($name == $admin['name'] && $password == $admin['password']) {
-        Session::setSession('admin', 'admin');
-        header('location: ' . '/task');
-    } else {
-        header('location: ' . '/login');
-    }
-}
 ?>
 <form id="register" method="post" action="/login">
     <div class="form-group">

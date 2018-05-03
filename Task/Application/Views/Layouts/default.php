@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="modal.js" defer></script>
 </head>
@@ -17,6 +15,10 @@
     }
     table th a, .t{
         color: black !important;
+    }
+    table td {
+        word-wrap: break-word;
+
     }
     div#modal {
         background-color: rgba(0,0,0,0.3);
@@ -92,6 +94,32 @@
     #addtask > div {
         margin: 0 auto;
     }
+    .btn-status {
+        display: block;
+        border: 1px solid maroon;
+        width: 140px;
+        height: 30px;
+        background-color: transparent;
+        outline-style: none;
+        padding: 1px;
+        color: black;
+        margin: 0 auto;
+        float: left;
+    }
+    .btn-status:hover {
+        color: inherit;
+        cursor: pointer;
+        background-color: #f33155;
+    }
+    table td {
+        font-family: SansSerif, "DejaVu Sans";
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: left;
+        max-width: 150px;
+    }
+
 </style>
 <?php  echo $content; ?>
 </body>

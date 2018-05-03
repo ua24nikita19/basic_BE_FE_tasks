@@ -49,18 +49,18 @@ class Router
                     $controller = new $controller_path($this->params);
                     $controller->$action();
                 } else {
-//                    View::error(404);
-                    echo 'Нету метода';
+                    View::error(404);
+//                    echo 'Нету метода';
                 }
 
             } else {
-//                View::error(404);
-                echo 'Нету class';
+                View::error(404);
+//                echo 'Нету class';
             }
 
         } else {
-//            View::error(404);
-            echo 'Нету rout';
+            View::error(404);
+//            echo 'Нету rout';
         }
     }
 }

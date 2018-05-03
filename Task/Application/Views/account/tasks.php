@@ -1,29 +1,18 @@
 <?php
-use Application\Lib\Session;
 
-$adminSessionName = isset($_SESSION['admin']) ? $_SESSION['admin'] : 'незнакомец';
-$countRecords = 3;
-$page = 0;
-
-
-$row = [];
-$row = $result[0]->fetch_all(MYSQLI_ASSOC);
-$paginationLength = floor(count($row)/$countRecords);
-
-for ($i=0;$i<$paginationLength;$i++){
-    if (isset($_POST[$i])){
-        $page = $_POST[$i];
-    }
-}
+//Application/Views/account/file_includes/tasks_inc.php
+include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tasks_inc.php';
 
 ?>
 
 <form action="/addtask" method="post">
     <input type="hidden" name="addNote">
     <span class="admin">Привет <?php echo $adminSessionName ?></span>
-    <a href="/login" class="btn-login">Вход</a>
+<!--    <a href="/login" name="sign_in" class="btn-login">Вход</a>-->
+    <button type="submit" class="btn-login" name="sign_in">Вход</button>
     <?php if (isset($_SESSION['admin'])): ?>
     <button type="submit" class="btn-exit" name="exit">Выход</button>
+    <button type="submit" name="test" class="btn-status">Изменить статус</button>
     <?php endif; ?>
     <button type="submit" class="btn-addd">Добавить задачу</button>
     <table class="table table-bordered table-dark">
@@ -34,30 +23,36 @@ for ($i=0;$i<$paginationLength;$i++){
             <?php endif; ?>
             <th scope="col"><a href="?sort=name">Имя</a></th>
             <th scope="col"><a href="?sort=email">e-mail</a></th>
-            <th scope="col"><span class="t">Текст</span></th>
+            <th scope="col" width="300px"><span class="t">Текст</span></th>
             <th scope="col"><span class="t">Картинка</span></th>
             <th scope="col"><a href="#">Время</a></th>
+            <th scope="col"><a href="#">Статус</a></th>
         </tr>
         </thead>
-<!--        --><?php //while($row = $result[0]->fetch_assoc()):?>
         <?php for($i=$page*$countRecords; $i<($page+1)*$countRecords; $i++): ?>
         <tbody>
         <tr>
-            <?php if (isset($_SESSION['admin'])): ?>
-            <th scope="row" width="5%"><button type="submit" name="id" value="<?php echo $row[$i]['id'] ?>"><img src="https://png.icons8.com/color/24/000000/edit.png"></button></th>
+            <?php if (isset($_SESSION['admin'])):
+
+                  $status = $row[$i]['status'];
+                  $checked = 0;
+                  $res = $status == $checked ? 'checked' : '';
+            ?>
+            <th scope="row" width="8%">
+                <button type="submit" name="id" value="<?php echo $row[$i]['id'] ?>"><img src="https://png.icons8.com/color/24/000000/edit.png"></button><Br>
+                <input type="radio" name="result_<?php echo $row[$i]['id']?>" value="1" <?php echo $res;$checked=$status; ?> >Done<Br>
+                <input type="radio" name="result_<?php echo $row[$i]['id'] ?>" value="0" <?php echo $res;$checked=$status; ?> > Not done<Br>
+            </th>
             <?php endif; ?>
             <td width="15%"><?php echo $row[$i]['username'] ?></td>
-            <td width="15%"><?php echo $row[$i]['email'] ?></td>
-            <td width="30%"><pre><?php echo $row[$i]['text'] ?></pre></td>
+            <td width="15%"> <?php echo $row[$i]['email'] ?> </td>
+            <input type="hidden" name="user_<?php echo $row[$i]['email'] ?>">
+            <td width="30%"><?php echo nl2br($row[$i]['text']) ?></td>
             <td width="10%"></td>
             <td width="10%"><?php echo $row[$i]['datetime'] ?></td>
+            <td width="10%"><?php echo boolval($row[$i]['status'])? 'Выполнено' : 'Не выполнено' ?></td>
         </tr>
-        <?php
-
-        endfor;
-        ?>
-<!--        --><?php //$id=$row['id']; endwhile;  ?>
-<!--        <input type="hidden" name="image_id" value="--><?php //echo $id ?><!--">-->
+        <?php endfor; ?>
         </tbody>
     </table>
 

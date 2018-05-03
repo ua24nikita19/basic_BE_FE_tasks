@@ -9,19 +9,10 @@ body {
     margin: 5px;
 }
 
-pre {
-    color: white;
-    text-align: justify;
-}
 .table.table-sm.table-dark td, th {
     padding: 15px;
 }
-table, pre {
-    font-family: SansSerif, "DejaVu Sans";
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
+
 table a, .t {
     color: white;
     text-underline: none;
@@ -47,9 +38,10 @@ table a:visited, a:hover {
     float: left;
     margin-right: 5px;
     outline-style: none;
-    padding: 1px;
+    padding: 10px;
     color: black;
 }
+
 .btn-addd {
     display: block;
     border: 1px solid maroon;
@@ -61,6 +53,7 @@ table a:visited, a:hover {
     color: black;
     margin: 0 auto;
 }
+
 .btn-addd:hover {
     color: inherit;
     cursor: pointer;
