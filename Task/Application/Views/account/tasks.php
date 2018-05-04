@@ -26,10 +26,10 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tas
             <th scope="col" width="300px"><span class="t">Текст</span></th>
             <th scope="col"><span class="t">Картинка</span></th>
             <th scope="col"><a href="#">Время</a></th>
-            <th scope="col"><a href="#">Статус</a></th>
+            <th scope="col"><a href="?sort=state"><span class="t">Статус</span></a></th>
         </tr>
         </thead>
-        <?php for($i=$page*$countRecords; $i<($page+1)*$countRecords; $i++): ?>
+        <?php for($i=$page*$countRecords; $i<($page+1)*$countRecords-$minusCountRows; $i++): ?>
         <tbody>
         <tr>
             <?php if (isset($_SESSION['admin'])):
@@ -44,17 +44,19 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tas
                 <input type="radio" name="result_<?php echo $row[$i]['id'] ?>" value="0" <?php echo $res;$checked=$status; ?> > Not done<Br>
             </th>
             <?php endif; ?>
-            <td width="15%"><?php echo isset($row[$i]['username'])? $row[$i]['username'] : ''?></td>
-            <td width="15%"> <?php echo isset($row[$i]['email'])? $row[$i]['email'] : '' ?> </td>
+            <td width="15%"><?php echo isset($row[$i]['username'])? $row[$i]['username'] : '-'?></td>
+            <td width="15%"> <?php echo isset($row[$i]['email'])? $row[$i]['email'] : '-' ?> </td>
             <input type="hidden" name="user_<?php echo $row[$i]['email'] ?>">
-            <td width="30%"><?php echo nl2br(isset($row[$i]['text'])? $row[$i]['text'] : '') ?></td>
+            <td width="30%"><?php echo nl2br(isset($row[$i]['text'])? $row[$i]['text'] : '-') ?></td>
             <td width="10%">
                 <?php
-                    $img = isset($row[$i]['image']) ? $row[$i]['image'] : '';
-                    if($img) echo '<img src="'.$row[$i]['image'].'"'.' width=100;height=100;>'
+                    $img = $row[$i]['image']==NULL ? '-' : $row[$i]['image'];
+//                    dd($row[$i]['image']);
+                    if($img!='-') {echo '<img src="'.$row[$i]['image'].'"'.' width=100;height=100;>';}
+                    else echo $img;
                 ?>
             </td>
-            <td width="10%"><?php echo isset($row[$i]['datetime'])? $row[$i]['datetime'] : '' ?></td>
+            <td width="10%"><?php echo isset($row[$i]['datetime'])? $row[$i]['datetime'] : '-' ?></td>
             <td width="10%"><?php
                 $statusRecord = isset($row[$i]['status']) ? $row[$i]['status'] : '';
                 echo boolval($statusRecord)? 'Выполнено' : 'Не выполнено';

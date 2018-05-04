@@ -23,6 +23,11 @@ return [
         'action' => 'tasksSortByEmail'
     ],
 
+    'task?sort=state' => [
+        'controller' => 'account',
+        'action' => 'tasksSortByState'
+    ],
+
     'addtask' => [
         'controller' => 'account',
         'action' => 'addtask'

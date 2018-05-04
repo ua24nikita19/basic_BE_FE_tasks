@@ -38,6 +38,13 @@ class AccountController extends Controller {
         $this->view->render('Задачи', $result2, 'account/tasks');
     }
 
+    public function tasksSortByStateAction() {
+        $db = new DB;
+        $result = $db->query('SELECT * FROM tasks ORDER BY status');
+        $result2['result'] = [$result];
+        $this->view->render('Задачи', $result2, 'account/tasks');
+    }
+
     public function editrecAction(){
         $db = new DB;
         $result = $db->query('SELECT * FROM tasks ORDER BY email');
