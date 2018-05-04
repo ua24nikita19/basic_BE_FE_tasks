@@ -15,10 +15,11 @@ $doneOrNotDone=0;
 $countRows = $result[0]->num_rows;
 $minusCountRows = 0;
 
-
 for ($i=0;$i<$paginationLength;$i++){
-    if (isset($_POST[$i])){
-        $page = $_POST[$i];
+    if (isset($_GET['page']) == $i){
+        $page = $_GET['page'];
+    } else {
+        $page = 0;
     }
 }
 

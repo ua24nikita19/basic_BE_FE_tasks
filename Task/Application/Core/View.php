@@ -25,7 +25,6 @@ class View
         }
 
         ob_start();
-//        require ROOT.DS.'Application/Views/'.$this->path.'.php';
         require ROOT.DS.'Application/Views/'.$right_file.'.php';
         $content = ob_get_clean();
         require ROOT.DS.'Application/Views/Layouts/'.$this->layout.'.php';

@@ -9,25 +9,25 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'add
 <form action="/addtask" method="post" id="addtask" enctype="multipart/form-data">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">Name</span>
+            <span class="input-group-text t">Name</span>
         </div>
         <input type="text" class="form-control" name="username">
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text">e-mail</span>
+            <span class="input-group-text t">e-mail</span>
         </div>
         <input type="text" class="form-control" name="email">
     </div>
     <div class="input-group">
         <div class="input-group-prepend">
-            <span class="input-group-text">Memo</span>
+            <span class="input-group-text t">Memo</span>
         </div>
         <textarea rows="10" class="form-control" name="text" maxlength="400"></textarea>
     </div>
     <input id="img" name="imgfile" type="file">
-    <button id="submit" type="button" class="btn btn-outline-success">Добавить</button><br>
-    <a href="/task" class="badge badge-info" name="back_task">К списку задач</a>
+    <button id="submit" type="button" class="btn btn-outline-success t">Add</button><br>
+    <a href="/task" class="badge badge-info t" name="back_task">Go back</a>
     <div id="modal">
         <div class="modal-content">
             <div class="modal-title">

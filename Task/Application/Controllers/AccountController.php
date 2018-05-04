@@ -24,6 +24,13 @@ class AccountController extends Controller {
         $this->view->render('Добавить');
     }
 
+    public function editrecAction(){
+        $db = new DB;
+        $result = $db->query('SELECT * FROM tasks ORDER BY email');
+        $result2['result'] = [$result];
+        $this->view->render('Задачи', $result2);
+    }
+
     public function tasksSortByNameAction(){
         $db = new DB;
         $result = $db->query('SELECT * FROM tasks ORDER BY username');
@@ -45,11 +52,19 @@ class AccountController extends Controller {
         $this->view->render('Задачи', $result2, 'account/tasks');
     }
 
-    public function editrecAction(){
+    public function paginationAction(){
         $db = new DB;
-        $result = $db->query('SELECT * FROM tasks ORDER BY email');
+        $result = $db->query('SELECT * FROM tasks');
         $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2);
+        $this->view->render('Задачи', $result2, 'account/tasks');
+    }
+
+    public function paginationWithSortAction(){
+        $db = new DB;
+        $sortField = $_GET['sort'];
+        $result = $db->query("SELECT * FROM tasks ORDER BY $sortField  ASC");
+        $result2['result'] = [$result];
+        $this->view->render('Задачи', $result2, 'account/tasks');
     }
 
 }
