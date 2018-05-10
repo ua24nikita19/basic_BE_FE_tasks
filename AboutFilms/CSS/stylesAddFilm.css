@@ -1,0 +1,86 @@
+body {
+    padding: 30px 15px;
+    min-width: 300px;
+    margin: 0;
+}
+
+.mainAdd {
+    margin: 0;
+    padding: 0;
+
+}
+
+.addNewFilm {
+    max-width: 350px;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: right;
+    display: flex;
+
+    flex-flow: row wrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+form *{
+    margin: 5px auto;
+    vertical-align: middle;
+}
+
+input {
+    border-radius: 4px;
+    border: 1px solid tomato;
+    width: inherit;
+    box-sizing: border-box;
+    height: 30px;
+    font-size: 1rem;
+    color: black;
+    padding: 0 10px;
+}
+
+form div {
+    flex-shrink:1;
+    min-width: 50px;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    height: auto;
+}
+form a{
+    display: inline-block;
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    line-height: 1;
+}
+form button {
+    border-radius: 4px;
+    border: none;
+    max-width: 100px;
+    height: 29px;
+    font-size: 1rem;
+    color: white;
+    background-color: tomato;
+    padding: 3px 25px;
+    flex-grow: 1;
+}
+
+label {
+    margin-right: 10px;
+}
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid tomato;
+    width: inherit;
+    box-sizing: border-box;
+    height: 300px;
+    font-size: 1rem;
+    color: black;
+    padding: 0 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
