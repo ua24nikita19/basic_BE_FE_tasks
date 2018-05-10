@@ -1,8 +1,0 @@
-body {
-    background-image: url(../IMAGES/1.jpeg);
-    background-repeat: repeat-y;
-    background-size: cover;
-    background-attachment: fixed;
-    padding: 5px;
-    min-width: 315px;
-}
