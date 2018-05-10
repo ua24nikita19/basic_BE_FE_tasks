@@ -29,7 +29,7 @@ if ( isset($_POST['title'], $_POST['date_release'], $_POST['format'], $_POST['ac
 
                         for ($i=0; $i<count($actors['arrayStars']); $i++){
                             $star = trim($actors['arrayStars'][$i]);
-                            $toConnect->query("INSERT INTO Actors (`Name`) VALUES ($star)");
+                            $res = $connection->query("INSERT INTO Actors (Name) VALUES ($star)");
                         }
 
                         $starsAll = $actors['textStars'];
