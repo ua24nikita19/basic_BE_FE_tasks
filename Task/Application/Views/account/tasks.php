@@ -2,7 +2,6 @@
 error_reporting(0);
 //Application/Views/account/file_includes/tasks_inc.php
 include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tasks_inc.php';
-
 ?>
 
 <form action="/addtask" method="post" >
@@ -71,14 +70,12 @@ include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'file_includes'.DS.'tas
         <?php for ($i=0;$i<$paginationLength;$i++):
             if (!isset($_GET['sort'])):
         ?>
-
             <li><a href="?page=<?php echo $i ?>"><?php echo $i+1; ?></a></li>
-        <?php
-            else:
-        ?>
+
+        <?php else: ?>
                 <li><a href="?page=<?php echo $i ?>&sort=<?php echo $_GET['sort'] ?>"><?php echo $i+1; ?></a></li>
         <?php
-        endif;
-        endfor;
+            endif;
+            endfor;
         ?>
     </ul>

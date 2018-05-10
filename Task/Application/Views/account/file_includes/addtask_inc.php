@@ -1,6 +1,9 @@
 <?php
+
 use Application\Lib\DB;
 include ROOT.DS.'Application'.DS.'Views'.DS.'account'.DS.'functions'.DS.'lastpart.php';
+
+
 $arrayStatesTask = [];
 
 if (isset($_SESSION['admin'])) {

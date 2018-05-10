@@ -1,5 +1,9 @@
 <?php
 
+/** File to determine routes available routes
+ *  @return array
+ */
+
 use Application\Core\Router;
 
 
@@ -17,7 +21,7 @@ if (preg_match('/sort=(email|username|status)/', $uri, $matches)){
 
 if (isset($sortBy)){
     $pageNumFromRouteWithSort = $pageNumFromRoute.'&sort='.$sortBy;
-}else {
+} else {
     $pageNumFromRouteWithSort ='';
 }
 

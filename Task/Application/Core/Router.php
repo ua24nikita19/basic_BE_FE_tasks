@@ -4,6 +4,8 @@ namespace Application\Core;
 
 use Application\Core\View;
 
+/** Class for shaping route */
+
 class Router
 {
     protected static $routes = [];
@@ -18,15 +20,18 @@ class Router
         }
     }
 
+    /** Get the route*/
     public static function getRoute(){
         return Router::$routes;
     }
 
+    /** Get existing routes*/
     public function add($route, $params) {
         $route = '#^'.$route.'$#';
         Router::$routes[$route] = $params;
     }
 
+    /** For check current uri with existing routes*/
     public function match() {
         $uri = trim($_SERVER['REQUEST_URI'], '/');
 
@@ -40,6 +45,8 @@ class Router
         return false;
     }
 
+    /** Check routes on exist and call the action of controller
+     from route*/
     public function run() {
 
         if ($this->match()) {
@@ -54,18 +61,18 @@ class Router
                     $controller = new $controller_path($this->params);
                     $controller->$action();
                 } else {
-//                    View::error(404);
-                    echo 'Нету метода';
+                    View::error(404);
+//                    echo 'Нету метода';
                 }
 
             } else {
-//                View::error(404);
-                echo 'Нету class';
+                View::error(404);
+//                echo 'Нету class';
             }
 
         } else {
-//            View::error(404);
-            echo 'Нету rout';
+            View::error(404);
+//            echo 'Нету rout';
         }
     }
 }

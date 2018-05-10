@@ -3,6 +3,7 @@ let modal = document.getElementById('modal'),
     modalCancel = document.getElementsByClassName('modal-btn-cancel')[0];
 
 submit.addEventListener('click', function () {
+
   let name = document.getElementsByClassName("form-control")[0],
       email = document.getElementsByClassName("form-control")[1],
       text = document.getElementsByClassName("form-control")[2],

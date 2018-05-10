@@ -2,6 +2,7 @@
 
 namespace Application\Core;
 
+/** Class for render page*/
 
 class View
 {
@@ -15,9 +16,15 @@ class View
         $this->path = $route['controller'].'/'.$route['action'];
     }
 
+    /** Render page with params
+     * @param $title - title of page
+     * @param $var - array with some sata which will be extract
+     * @param $file - string is path to executable file
+     */
     public function render($title, $var = [], $file='')
     {
         extract($var);
+
         if ($file){
             $right_file = $file;
         } else{
@@ -30,12 +37,18 @@ class View
         require ROOT.DS.'Application/Views/Layouts/'.$this->layout.'.php';
     }
 
+    /** Redirect to other page
+     * @param $uri - uri of web site
+     */
     public function redirect($uri)
     {
         header('location: '.$uri);
         exit;
     }
 
+    /** Send headers with response code
+     * @param $code - number of error
+     */
     public static function error($code)
     {
         http_response_code($code);

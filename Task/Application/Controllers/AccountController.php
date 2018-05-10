@@ -14,57 +14,31 @@ class AccountController extends Controller {
 
     public function tasksAction()
     {
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2);
+        $result['row'] = $this->loadModel('Task')->getAllRecords();
+        $this->view->render('Задачи', $result);
     }
 
-    public function addtaskAction() {
+    public function addtaskAction()
+    {
         $this->view->render('Добавить');
     }
 
-    public function editrecAction(){
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks ORDER BY email');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2);
+    public function editrecAction()
+    {
+        $result['row'] = $this->loadModel('Task')->getAllRecords();
+        $this->view->render('Задачи', $result);
     }
 
-    public function tasksSortByNameAction(){
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks ORDER BY username');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2, 'account/tasks');
+    public function paginationAction()
+    {
+        $result['row'] = $this->loadModel('Task')->getAllRecords();
+        $this->view->render('Задачи', $result, 'account/tasks');
     }
 
-    public function tasksSortByEmailAction(){
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks ORDER BY email');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2, 'account/tasks');
-    }
-
-    public function tasksSortByStateAction() {
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks ORDER BY status');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2, 'account/tasks');
-    }
-
-    public function paginationAction(){
-        $db = new DB;
-        $result = $db->query('SELECT * FROM tasks');
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2, 'account/tasks');
-    }
-
-    public function paginationWithSortAction(){
-        $db = new DB;
-        $sortField = $_GET['sort'];
-        $result = $db->query("SELECT * FROM tasks ORDER BY $sortField  ASC");
-        $result2['result'] = [$result];
-        $this->view->render('Задачи', $result2, 'account/tasks');
+    public function paginationWithSortAction()
+    {
+        $result['row'] = $this->loadModel('Task')->getRecordSortedByParam($_GET['sort']);
+        $this->view->render('Задачи', $result, 'account/tasks');
     }
 
 }

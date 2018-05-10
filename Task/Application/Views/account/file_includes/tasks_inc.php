@@ -7,12 +7,10 @@ $adminSessionName = isset($_SESSION['admin']) ? $_SESSION['admin'] : 'незна
 $countRecords = 3;
 $page = 0;
 
-$row = [];
-$row = $result[0]->fetch_all(MYSQLI_ASSOC);
 $paginationLength = ceil(count($row)/$countRecords);
 $doneOrNotDone=0;
 
-$countRows = $result[0]->num_rows;
+$countRows = count($row);
 $minusCountRows = 0;
 
 for ($i=0;$i<$paginationLength;$i++){

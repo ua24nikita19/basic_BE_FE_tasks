@@ -1,9 +1,11 @@
 <?php
+
 use Application\Lib\DB;
 
 if (!isset($_SESSION['admin'])) {
     header('location:'.'/task');
 }
+
 $create_connection = new DB();
 $connection = $create_connection->getConnect();
 $getRecordById = $connection->query("SELECT * FROM tasks WHERE id={$_SESSION['edit_record']}");
